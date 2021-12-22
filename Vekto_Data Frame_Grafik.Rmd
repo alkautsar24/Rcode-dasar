@@ -1,0 +1,60 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+#Operasi Matematika
+#Penjumlahan dan pengurangan
+10+2-3
+#Operasi perkalian dan pembagian
+10/2*5
+#Nilai eksponensial
+exp(10)
+#Nilai Logaritma natural
+log(15)
+#Nilai Logaritma
+log(100,2)
+#Nilai mutlak
+abs(15)
+#Nilai akar
+sqrt(15)
+#Nilai pangkat
+5^2
+#Nilai faktorial
+factorial(18)
+```
+```{r}
+#membuat data frame vektor
+A <- c(3,2,3,4)
+#Mengubah isi data frame vektor
+A[c(1,2,4)]<-c(2,3,5)
+names(A)<-c('baju','sepatu','celana','jaket')
+summary(A)
+A+c(2,4,5,6)
+```
+
+```{r}
+#tambah baris data frame
+library(readxl)
+B <- read_excel('coba.xlsx', sheet = 'Sheet1')
+#operasi matematika di data frame
+B$Total=B$Baju+B$Celana
+A=data.frame(Nama=('Fadhil'), Baju=(2), Celana=(3))
+A$Total=A$Baju+A$Celana
+E=rbind(B,A)
+modus <- function(x) {
+ux <- unique(x)
+ux[which.max(tabulate(match(x, ux)))]
+}
+modus(E$Total)
+median(E$Total)
+```
+
+```{r}
+#grafik
+library(ggplot2)
+Baju <- ggplot(data=E)+geom_bar(mapping=aes(E$'Baju',fill=as.factor(E$Nama)))
+ggplot(data=E)+geom_bar(mapping=aes(E$'Celana',fill=as.factor(E$Nama)))
+ggplot(data=E)+geom_bar(mapping=aes(E$'Total',fill=as.factor(E$Nama)))
+```
